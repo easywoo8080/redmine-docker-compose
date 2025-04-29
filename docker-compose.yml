@@ -1,0 +1,21 @@
+services:
+  redmine:
+    image: redmine:6.0.5  # 사용할 Redmine 도커 이미지 버전
+    container_name: redmine  # 컨테이너 이름 지정
+    ports:
+      - "${REDMINE_PORT}:3000"  # 호스트 포트는 ${REDMINE_PORT} (예: 8588)
+    environment:
+      REDMINE_DB_ADAPTER: postgresql  # 데이터베이스 어댑터 (PostgreSQL 사용)
+      REDMINE_DB_POSTGRES: "${DB_HOST}"  # PostgreSQL 데이터베이스 호스트 (예: db_host)
+      REDMINE_DB_PORT: "${DB_PORT}"  # PostgreSQL 포트 (예: 5432)
+      REDMINE_DB_USERNAME: "${DB_USER}"  # PostgreSQL 사용자명 (예: redmine_user)
+      REDMINE_DB_PASSWORD: "${DB_PASS}"  # PostgreSQL 비밀번호 (예: redmine_password)
+      REDMINE_DB_DATABASE: "${DB_NAME}"  # PostgreSQL 데이터베이스 이름 (예: redmine_db)
+    volumes:
+      - redmine-data:/usr/src/redmine/files  # Redmine 파일 저장소 마운트
+      - ./config/configuration.yml:/usr/src/redmine/config/configuration.yml  # Redmine 설정 파일 마운트
+      - ./plugins:/usr/src/redmine/plugins  # Redmine 플러그인 디렉토리 마운트
+
+volumes:
+  redmine-data:
+    driver: local  # 로컬 볼륨 사용

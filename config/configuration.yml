@@ -1,0 +1,11 @@
+production:
+  email_delivery:
+    delivery_method: :smtp  # 메일 발송 방식 (SMTP 사용)
+    smtp_settings:
+      address: <%= ENV['SMTP_ADDRESS'] %>  # SMTP 서버 주소 (Gmail은 smtp.gmail.com)
+      port: <%= ENV['SMTP_PORT'] %>        # SMTP 포트 (Gmail은 587)
+      domain: <%= ENV['SMTP_DOMAIN'] %>    # SMTP 서버 도메인 (smtp.gmail.com 또는 gmail.com)
+      authentication: :plain               # 인증 방식 (Gmail은 plain)
+      user_name: <%= ENV['SMTP_USER'] %>   # Gmail 주소 (예: yourname@gmail.com)
+      password: <%= ENV['SMTP_PASS'] %>    # Gmail 앱 비밀번호 (2단계 인증 시 앱 비밀번호 사용)
+      enable_starttls_auto: true           # TLS 암호화 사용 여부 (Gmail은 true)
