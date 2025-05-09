@@ -26,7 +26,7 @@
 
 이 문서는 **Redmine 6.0.5**와 **PostgreSQL**을 연결하는 Docker Compose 설정을 설명합니다.
 
-## 1. Docker Compose 파일 구조
+## 1. docker-compose.yml 파일 구조
 
 ```yaml
 services:
@@ -53,7 +53,7 @@ volumes:
 ```
 
 
-## 4. Redmine Email Delivery 설정 (SMTP)
+## 4. Redmine Email Delivery 설정 (SMTP) (configuration.yml)
 
 이 문서는 Redmine의 `production` 환경에서 이메일 발송을 설정하는 방법을 설명합니다. 이메일 발송을 위해 SMTP 서버를 사용하며, Gmail을 예시로 설명합니다.
 
